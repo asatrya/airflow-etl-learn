@@ -1,4 +1,0 @@
-# sudo apt install libpq-dev python-dev
-psycopg2
-sqlalchemy
-sqlalchemy_utils

@@ -27,20 +27,20 @@ dag = DAG(
 # First task is to query get the weather from openweathermap.org.
 task1 = BashOperator(
     task_id='get_weather',
-    bash_command='python ~/airflow/dags/src/get_weather.py',
+    bash_command='python $AIRFLOW_HOME/dags/src/get_weather.py',
     dag=dag)
 
 
 # Second task is to process the data and load into the database.
 task2 = BashOperator(
     task_id='transform_data',
-    bash_command='python ~/airflow/dags/src/transform_data.py',
+    bash_command='python $AIRFLOW_HOME/dags/src/transform_data.py',
     dag=dag)
 
 # Second task is to process the data and load into the database.
 task3 = BashOperator(
     task_id='load_table',
-    bash_command='python ~/airflow/dags/src/load_table.py',
+    bash_command='python $AIRFLOW_HOME/dags/src/load_table.py',
     dag=dag)
 
 # Set task1 "upstream" of task2, i.e. task1 must be completed
