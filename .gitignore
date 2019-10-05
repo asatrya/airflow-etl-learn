@@ -1,0 +1,6 @@
+*.pyc
+data/
+logs/
+airflow.cfg
+airflow.db
+unittests.cfg
