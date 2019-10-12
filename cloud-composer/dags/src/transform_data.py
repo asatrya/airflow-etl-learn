@@ -15,7 +15,7 @@ def transform_data(**kwargs):
     Processes the json data, checks the types and save as csv
     """
 
-    # Read file from previous task
+    # Set source file
     source_file_name = str(kwargs["execution_date"]) + '.json'
     source_dir_path = os.path.join(os.path.dirname(__file__),
                             '..', '..',

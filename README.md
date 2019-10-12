@@ -53,7 +53,7 @@ $ psql -U testuser -d testdb -h localhost
 Password for user testuser: ......
 
 # Create table
-testdb=> CREATE TABLE IF NOT EXISTS weather_table
+testdb=> CREATE TABLE IF NOT EXISTS weather
                 (
                     city         TEXT,
                     country      TEXT,
@@ -77,7 +77,7 @@ CREATE TABLE
 1. Fill database credentials, for example:
 
    ```txt
-   Conn Id = weather_id
+   Conn Id = weatherdb_postgres_conn
    Conn Type = PostgreSQL
    Host = localhost
    Schema = testdb

@@ -1,10 +1,10 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 
 from src.get_weather import get_weather
 from src.transform_data import transform_data
+from src.load_table import load_table
 import requests
 import json
 import os
@@ -46,12 +46,13 @@ task2 = PythonOperator(
     python_callable=transform_data,
     dag=dag)
 
-# Second task is to process the data and load into the database.
-task3 = BashOperator(
+# Third task is to load data into the database.
+task3 = PythonOperator(
     task_id='load_table',
-    bash_command='python $AIRFLOW_HOME/dags/src/load_table.py',
+    provide_context=True,
+    python_callable=load_table,
     dag=dag)
 
-# Set task1 "upstream" of task2, i.e. task1 must be completed
-# before task2 can be started.
+# Set task1 "upstream" of task2
+# task1 must be completed before task2 can be started
 task1 >> task2 >> task3
