@@ -1,5 +1,0 @@
-# sudo apt install libpq-dev python-dev
-apache-airflow[postgres,gcp]
-psycopg2
-sqlalchemy
-sqlalchemy_utils
