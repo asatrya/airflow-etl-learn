@@ -7,3 +7,4 @@ unittests.cfg
 venv
 .vscode
 __pycache__
+airflow-webserver.pid
